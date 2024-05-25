@@ -7,7 +7,7 @@ const openai = new OpenAI({
   });
 
 // topic -> sentence for which explanation about measurements etc. is to be created
-async function create_explanation(topic) {
+async function createExplanation(topic) {
     try {
         const stream = await openai.chat.completions.create({
             model: 'gpt-3.5-turbo',
@@ -24,7 +24,7 @@ async function create_explanation(topic) {
 
 // topic ->  sentence to make conclusion for
 // knowledge -> expected answer
-async function create_conclusion(topic, knowledge) {
+async function createConclusion(topic, knowledge) {
     try {
         const stream = await openai.chat.completions.create({
             model: 'gpt-3.5-turbo',
