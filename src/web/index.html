@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPRAWOZDATOR</title>
+    <link type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"> </script>
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <script type="module" src="index.js" defer> </script>
+    <script src="generate-table.js"> </script>
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <header>
+        <h1>Sprawozdator</h1>
+    </header>
+
+    <main>
+        <div class="main-container">
+            <section>
+                <h2>Witaj, na naszej stronie!</h2>
+                <p>Tutaj <strong>Sprawozdator</strong>.</p>
+                <p>Aby zacząć...</p>
+                <p><strong>Krok 1: </strong>Wybierz z listy swoje sprawozdanie</p>
+                <p><strong>Krok 2: </strong>Dodaj plik z danymi pomiarowymi</p>
+                <p><strong>Krok 3: </strong>Generuj sprawozdanie</p>
+                <br>
+                <form action="">
+                    <label for="nameNumberSelects">Wybierz Nr. sprawozdania:</label>
+                    <input list="nameNumberSelect" name="nameNumberSelects" id="nameNumberSelects">
+                    <datalist id="nameNumberSelect">
+                        <option value="1" class="nr1">Rozkład normalny</option>
+                        <option value="4" class="nr4">Wyznaczenie przyspieszenia ziemskiego za pomocą wahadła rewersyjnego</option>
+                        <option value="5" class="nr5">Badanie drgań układu dwóch sprzężonych wahadeł</option>
+                        <option value="6" class="nr6">Wyznaczenie prędkości dźwięku w powietrzu metodą fali stojącejstrona otwiera się w nowej karcie</option>
+                        <option value="8" class="nr8">Wyznaczenie współczynnika lepkości cieczy metodą Stokesa</option>
+                        <option value="9" class="nr9">Wyznaczenie napięcia powierzchniowego za pomocą kapilarystrona</option>
+                        <option value="14" class="nr14">Dobór dodatkowych rezystorów i boczników do galwanometru</option>
+                        <option value="15" class="nr15">Pomiar siły elektromotorycznej ogniwa i charakterystyka jego pracystrona otwiera się w nowej karcie</option>
+                        <option value="16" class="nr16">Wyznaczenie czułości galwanometru</option>
+                        <option value="17" class="nr17">Cechowanie termoparystrona otwiera się w nowej karcie</option>
+                        <option value="18" class="nr18">Wyznaczanie przerwy energetycznej germanustrona otwiera się w nowej karcie</option>
+                        <option value="19" class="nr19">Badanie charakterystyki diody półprzewodnikowejstrona otwiera się w nowej karcie</option>
+                        <option value="20" class="nr20">Wyznaczanie e/m z pomiarów efektu magnetronowegostrona otwiera się w nowej karcie</option>
+                        <option value="22" class="nr22">Pomiar pętli histerezy magnetycznej</option>
+                        <option value="25" class="nr25">Badanie zjawiska Hallastrona otwiera się w nowej karcie</option>
+                        <option value="26" class="nr26">Pomiar współczynnika indukcji wzajemnejstrona otwiera się w nowej karcie</option>
+                        <option value="27" class="nr27">Wyznaczanie elektronowej polaryzowalności cząsteczki wody</option>
+                        <option value="28" class="nr28">Wyznaczanie długości fali świetlnej za pomocą siatki dyfrakcyjnejstrona otwiera się w nowej karcie</option>
+                        <option value="29" class="nr29">Wyznaczanie ogniskowej soczewek cienkich za pomocą ławy optycznejstrona otwiera się w nowej karcie</option>
+                        <option value="31" class="nr31">Wyznaczanie stałej Rydberga i stałej Plancka z widma liniowego wodoru</option>
+                        <option value="32" class="nr32">Badanie promieniowania ciała doskonale czarnego</option>
+                        <option value="33" class="nr33">Wyznaczanie prędkości lotu ciała przy pomocy wahadła balistycznego</option>
+                        <option value="34" class="nr34">Wyznaczanie współczynnika pochłaniania promieniowania gamma w metalachstrona otwiera się w nowej karcie</option>
+                        <option value="35" class="nr35">Wyznaczanie szerokości przerwy zabronionej półprzewodników metodą optyczną</option>
+                        <option value="36" class="nr36">Wyznaczanie momentu bezwładności bryły z wykorzystaniem maszyny Atwooda</option>
+                        <option value="38" class="nr38">Pomiar składowej poziomej ziemskiego pola magnetycznegostrona otwiera się w nowej karcie</option>
+                        <option value="39" class="nr39">Czas trwania zderzenia kul</option>
+                        <option value="40" class="nr40">Wyznaczanie modułu sprężystości przy pomocy wahadła torsyjnegostrona otwiera się w nowej karcie</option>
+                        <option value="41" class="nr41">Badanie transformacji energii mechanicznej w krążku Maxwellastrona otwiera się w nowej karcie</option>
+                        <option value="42" class="nr42">Wyznaczanie momentu bezwładności bryły sztywnej względem dowolnej osi obrotu z wykorzystaniem twierdzenia Steinerastrona otwiera się w nowej karcie</option>
+                        <option value="43" class="nr43">Wyznaczanie aberracji sferycznej soczewek i ich układówstrona otwiera się w nowej karcie</option>
+                        <option value="44" class="nr44">Wyznaczanie długości fal świetlnych źródeł monochromatycznych (LED)</option>
+                        <option value="45a" class="nr45a">Zanikanie ekspotencjalne (tłumienie radioaktywność ładowanie i rozładowanie kondensatora wzór barometryczny)</option>
+                        <option value="45b" class="nr45b">Rozkład Maxwella - Boltzmana</option>
+                        <option value="46" class="nr46">Wyznaczenie przyspieszenia grawitacyjnego za pomocą wahadła matematycznego</option>
+                        <option value="47" class="nr47">Wyznaczenie stałej sprężystości sprężyny</option>
+                        <option value="48" class="nr48">Badanie praw Kirchoffa</option>
+                    </datalist>
+                </form>
+                <br>
+                <br>
+
+                <div class="generate">
+                    <button id="download_btn">Pobierz sprawozdanie</button>
+                </div>
+
+                <div class="generate" style="display: none;">
+                    <button id="generate_btn" action="/generate">Generuj sprawozdanie</button>
+                </div>
+            </section>
+        </div>
+
+        <div class="color-mode">
+            <label class="switch">
+                <input type="checkbox" id="toggle-switch" onclick="ToggleDarkMode()">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <!-- tabela dynamiczna -->
+        <div class="table" id="table-container"></div>
+        
+    </main>
+
+
+</body>
+</html>

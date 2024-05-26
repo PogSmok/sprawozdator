@@ -173,7 +173,6 @@ function eightStep(gravity, inSeries) {
 }
 
 
-console.log(userData, userSeries);
 measurements = firstStep(userData, userSeries);
 lengthUncertainties = secondStep();
 measurements = thirdStep(measurements, userSeries);
@@ -182,7 +181,7 @@ periodUncertainties = fifthStep(measurements, userSeries);
 gravityCalculations = sixthStep(periods[1], userSeries, lengthUncertainties[1], periodUncertainties["stdUnc"]);
 eightStep(gravityCalculations, userSeries);
 
-Tokens = [
+Tokens =
     {
         "2.1. Wstęp teoretyczny": 
         [
@@ -405,5 +404,6 @@ Tokens = [
                 zostały w pełni zrealizowane."
             ]
         ]
-    },
-]
+    }
+
+
