@@ -45,9 +45,29 @@ section {
     border-color: green;
 }
 
+#download_btn {
+    background-color: #2d86c6;
+    width: 250px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 30px;
+    border-color: rgb(0, 17, 79);
+}
+
 
 #generate_btn:hover {
     background-color: #45a049;
+}
+
+#switch{
+    position: fixed;
+    top: 0;
+    right: 0;
 }
 
 .generate{
@@ -75,4 +95,69 @@ option {
     overflow: hidden;
     text-overflow: ellipsis;
     border-bottom: 1px solid #DDD;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    border: 2px solid #272121;
+    width: 100%;
+    border-radius: 2px;
+}
+  
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.switch {
+    position: fixed;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    top: 100px;
+    left: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
 }

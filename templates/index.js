@@ -1,24 +1,55 @@
-function GetUserPDF() {
-    var pdf = document.getElementById('myfile');
-    // now we have to read the pdf
-}
 
 function ToggleDarkMode() {
     var element = document.body;
     element.classList.toggle("dark-mode");
 }
 
-function populateDropdown(data) {
-    const select = document.getElementById('nameNumberSelect');
-    data.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item.id;
-        option.text= item.name;
-        select.appendChild(option);
+function loadSubpage(id) {
+        
+    document.querySelectorAll('[id^="subpage"]').forEach(element => {
+            element.style.display = 'none';
     });
+    
+        
+    const subpage = document.getElementById(`subpage-${id}`);
+    if (subpage) {
+        subpage.style.display = 'block';
+    } else {
+        console.error(`Subpage with ID ${id} not found.`);
+    }
 }
 
-fetch('report.json')
-    .then(response => response.json()) 
-    .then(data => populateDropdown(data)) 
-    .catch(error => console.error('Error fetching JSON:', error)); 
+let selectedValue = "";
+
+document.getElementById("nameNumberSelects").addEventListener('input', function() {
+    var val = this.value;
+    
+    var options = document.querySelector('datalist').options;
+    for (var i = 0; i < options.length; i++) {
+        if (options[i].value === val) {
+        
+            console.log(val);
+            
+            selectedValue = val;
+            clearTable();
+            window[`generateTable${val}`]();
+            break;
+        }
+    }
+});
+
+function downloadPDF(){
+    console.log(selectedValue);
+    if(selectedValue){
+        window.open(`C:\\flutterapps\\apka\\sprawozdator-reports-list\\reports\\LabFizCw${selectedValue}.pdf`, '_blank');
+    } else {
+        alert('Nie wybrano pliku');
+    }
+}
+
+function clearTable() {
+    var tableContainer = document.getElementById('table-container');
+    tableContainer.innerHTML = ''; 
+}
+    
+
