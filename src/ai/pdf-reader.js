@@ -1,7 +1,6 @@
 import pdfUtil from "pdf-to-text";
 import * as openai from "./openai.js";
 import * as htmlwriter from "./html-writer.js";
-import *
 
 class PdfData {
     //string
