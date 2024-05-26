@@ -54,9 +54,10 @@ function generateTable1(){
 
 }
 
+const Lm = [];
+const records = [];
+
 function generateTable46() {
-    const Lm = [];
-    const records = [];
     var tableContainer = document.getElementById('table-container');
     var table = document.createElement('table');
     var thead = document.createElement('thead');
@@ -69,10 +70,8 @@ function generateTable46() {
         if (headerText.trim() === '') {
             var input = document.createElement('input');
             input.type = 'text';
+            input.id = 'result-'+ (index-1);
             input.placeholder = 'Długość wahadła';
-            input.addEventListener('change', function(event) {
-                Lm[index] = event.target.value;
-            });
             th.appendChild(input);
         } else {
             th.innerHTML = headerText;
@@ -99,11 +98,8 @@ function generateTable46() {
             var cell = document.createElement('td');
             var input = document.createElement('input');
             input.type = 'text';
-            input.id = 'result-' + (i * 5 + j);
+            input.id = 'result-' + ((i * 5 + j)+1);
             input.placeholder = 'Wynik';
-            input.addEventListener('change', function(event) {
-                records.push(event.target.value);
-            });
             cell.appendChild(input);
             row.appendChild(cell);
         }
@@ -114,5 +110,25 @@ function generateTable46() {
     table.appendChild(thead);
     table.appendChild(tbody);
     tableContainer.appendChild(table);
+
+    for (let i = 1; i <= 65; i++) { 
+        let element = document.getElementById('result-' + i);
+        if (element) {
+            if (i <= 5) {
+                element.addEventListener('input', function() {
+                    Lm[i] = element.value;
+                    console.log('Lm[' + i + ']:', element.value); 
+                });
+            } else {
+                element.addEventListener('input', function() {
+                    records[i] = element.value;
+                    console.log('records[' + i + ']:', element.value); 
+                });
+            }
+        } else {
+            console.log('Element result-' + i + ' not found');
+        }
+    }
+
 }
 
