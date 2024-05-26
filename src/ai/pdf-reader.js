@@ -1,6 +1,7 @@
 import pdfUtil from "pdf-to-text";
 import * as openai from "./openai.js";
 import * as htmlwriter from "./html-writer.js";
+import *
 
 class PdfData {
     //string
@@ -23,10 +24,9 @@ export async function writeRaport(pdfPath, raportPath) {
                                         .split(/[1-9]\. /g)
         extractedData.tasks.forEach(task => task = task.split("\n\n")[0].trim());     
 
-        let content = "";
+        let content = `<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<link rel="shortcut icon" href="#">\n</head>\n`;
         for(const task of extractedData.tasks) {
-            content += "<div class='raport-p'>" + (await openai.createExplanation(task)) + "</div>";
-            console.log(content);
+            content += "<div class='raport-p' style='margin-top:50px'>" + (await openai.createExplanation(task)) + "</div>";
         }
         htmlwriter.createHtml(raportPath, content);
     });

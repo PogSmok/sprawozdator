@@ -1,9 +1,16 @@
 {
   "dependencies": {
+    "chart.js": "^4.4.3",
+    "chartjs-chart-error-bars": "^4.4.0",
+    "connect": "^3.7.0",
     "dotenv": "^16.4.5",
+    "express": "^4.19.2",
     "jspdf": "^2.5.1",
+    "mime": "^4.0.3",
     "openai": "^4.47.1",
-    "pdf-to-text": "^0.0.7"
+    "path": "^0.12.7",
+    "pdf-to-text": "^0.0.7",
+    "serve-static": "^1.15.0"
   },
   "type": "module"
 }

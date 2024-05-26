@@ -176,25 +176,10 @@ function ninthStep() {
     // mark constant value of g as a line on graph
 }
 
-console.log(userData, userSeries);
 measurements = firstStep(userData, userSeries);
-console.log(measurements);
 lengthUncertainties = secondStep();
 measurements = thirdStep(measurements, userSeries);
-console.log(measurements);
 periods = fourthStep(measurements, userSeries);
-console.log("Periods")
-console.log(periods[0]);
-console.log(periods[1]);
 periodUncertainties = fifthStep(measurements, userSeries);
-console.log("Uncertainties")
-console.log(periodUncertainties[0]);
-console.log(periodUncertainties[1]);
-console.log(periodUncertainties[2]);
-console.log(periodUncertainties[3]);
 gravityCalculations = sixthStep(periods[1], userSeries, lengthUncertainties[1], periodUncertainties[1]);
-console.log("Gravity");
-console.log(gravityCalculations[0]);
-console.log(gravityCalculations[1]);
-console.log(gravityCalculations[2]);
 eightStep(gravityCalculations, userSeries);

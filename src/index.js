@@ -1,55 +1,47 @@
+import http from "http";
+import fs from "fs";
+import path from "path";
+import * as pdfReader from "./ai/pdf-reader.js";
 
-function ToggleDarkMode() {
-    var element = document.body;
-    element.classList.toggle("dark-mode");
-}
+const hostname = 'localhost';
+const port = 8080;
 
-function loadSubpage(id) {
-        
-    document.querySelectorAll('[id^="subpage"]').forEach(element => {
-            element.style.display = 'none';
-    });
-    
-        
-    const subpage = document.getElementById(`subpage-${id}`);
-    if (subpage) {
-        subpage.style.display = 'block';
-    } else {
-        console.error(`Subpage with ID ${id} not found.`);
-    }
-}
+const server =  http.createServer(async (req, res) => {
+    if (req.method == 'GET') {
+        let fileUrl;
+        console.log(req.url);
+        if (req.url == '/') fileUrl = 'index.html';
+        else if(req.url.includes("Lab")){
+            await pdfReader.writeRaport(`reports` + req.url, "web/res.html");
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'text/html');
+            var filePath = path.resolve("./web/res.html");
+            console.log(filePath);
+            fs.createReadStream(filePath).pipe(res);
+            return;
+        }
+        else fileUrl = req.url;
 
-let selectedValue = "";
-
-document.getElementById("nameNumberSelects").addEventListener('input', function() {
-    var val = this.value;
-    
-    var options = document.querySelector('datalist').options;
-    for (var i = 0; i < options.length; i++) {
-        if (options[i].value === val) {
-        
-            console.log(val);
-            
-            selectedValue = val;
-            clearTable();
-            window[`generateTable${val}`]();
-            break;
+        var filePath = path.resolve('./web/' + fileUrl);
+        const fileExt = path.extname(filePath);
+        if (fileExt == '.html') {
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'text/html');
+            fs.createReadStream(filePath).pipe(res);
+        }
+        else if (fileExt == '.css') {
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'text/css');
+            fs.createReadStream(filePath).pipe(res);
+        }
+        else {
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'text/javascript');
+            fs.createReadStream(filePath).pipe(res);
         }
     }
 });
 
-function downloadPDF(){
-    console.log(selectedValue);
-    if(selectedValue){
-        window.open(`C:\\flutterapps\\apka\\sprawozdator-reports-list\\reports\\LabFizCw${selectedValue}.pdf`, '_blank');
-    } else {
-        alert('Nie wybrano pliku');
-    }
-}
-
-function clearTable() {
-    var tableContainer = document.getElementById('table-container');
-    tableContainer.innerHTML = ''; 
-}
-    
-
+server.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+});
