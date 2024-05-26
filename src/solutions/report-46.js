@@ -1,3 +1,5 @@
+const Chart = require("chart-js");
+
 // everything in standard units [m, s, kg etc.
 let userSeries =
 [
@@ -63,11 +65,11 @@ function secondStep() {
 function thirdStep(measurements, inSeries) {
     // discard gross errors - simplified -> only discard two most extreme values
     inSeries.forEach((val) => {
-        measure = measurements[val];
-        max = -1;
-        min = 10000;
-        avg = average(measure);
-        for (tmp in range(2)) {
+        let measure = measurements[val];
+        let max = -1;
+        let min = 10000;
+        let avg = average(measure);
+        for (let tmp in range(2)) {
             for (let j = 0; j < 10; j++) {
                 if (measure[j] > max) max = measure[j];
                 if (measure[j] < min) min = measure[j];
@@ -84,8 +86,8 @@ function thirdStep(measurements, inSeries) {
 
 function fourthStep(measurements, inSeries) {
     // average time for 10 cycles and 1 cycle
-    periodOfTen = {};
-    periodOfOne = {};
+    let periodOfTen = {};
+    let periodOfOne = {};
     inSeries.forEach((val) => {
         periodOfTen[val] = average(measurements[val]);
         periodOfOne[val] = periodOfTen[val] / 10;
@@ -95,10 +97,10 @@ function fourthStep(measurements, inSeries) {
 
 function fifthStep(measurements, inSeries) {
     // u(T) and sigma(T), deltaT
-    stdUnc = {};
-    expUnc = {};
-    stdDev = {};
-    dT = 0.02;
+    let stdUnc = {};
+    let expUnc = {};
+    let stdDev = {};
+    let dT = 0.02;
 
     inSeries.forEach((val) => {
         stdDev[val] = standardDeviation(measurements[val], average(measurements[val]));
@@ -111,9 +113,9 @@ function fifthStep(measurements, inSeries) {
 
 function sixthStep(periods, inSeries, uL, uT) {
     // calculate g u(g) and U(g)
-    g = {};
-    stdUnc = {};
-    expUnc = {};
+    let g = {};
+    let stdUnc = {};
+    let expUnc = {};
     inSeries.forEach((val) => {
         g[val] = parseFloat(val) * ((Math.PI*2) / periods[val])**2;
         stdUnc[val] = Math.sqrt( (((16 * (Math.PI ** 4)) / (periods[val])) * (uL**2)) + (((64 * (Math.PI ** 4) * (parseFloat(val)**2)) / (periods[val] ** 6))*(uT[val] ** 2)) );
@@ -128,8 +130,8 @@ function seventhStep() {
 
 function eightStep(gravity, inSeries) {
     let G = 9.8123;
-    constGrav = [];
-    gravityData = [];
+    let constGrav = [];
+    let gravityData = [];
     inSeries.forEach((val) => {
         gravityData.push(gravity["g"][val])
         constGrav.push(G);
@@ -173,15 +175,15 @@ function eightStep(gravity, inSeries) {
 }
 
 
-measurements = firstStep(userData, userSeries);
-lengthUncertainties = secondStep();
+let measurements = firstStep(userData, userSeries);
+let lengthUncertainties = secondStep();
 measurements = thirdStep(measurements, userSeries);
-periods = fourthStep(measurements, userSeries);
-periodUncertainties = fifthStep(measurements, userSeries);
-gravityCalculations = sixthStep(periods[1], userSeries, lengthUncertainties[1], periodUncertainties["stdUnc"]);
+let periods = fourthStep(measurements, userSeries);
+let periodUncertainties = fifthStep(measurements, userSeries);
+let gravityCalculations = sixthStep(periods[1], userSeries, lengthUncertainties[1], periodUncertainties["stdUnc"]);
 eightStep(gravityCalculations, userSeries);
 
-Tokens =
+export const tokens =
     {
         "2.1. Wstęp teoretyczny": 
         [

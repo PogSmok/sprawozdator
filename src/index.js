@@ -4,15 +4,16 @@ import path from "path";
 import * as pdfReader from "./ai/pdf-reader.js";
 
 const hostname = 'localhost';
-const port = 8080;
+const port = 8081;
 
 const server =  http.createServer(async (req, res) => {
+    if(req.url == "/favicon.ico") return;
     if (req.method == 'GET') {
         let fileUrl;
         console.log(req.url);
         if (req.url == '/') fileUrl = 'index.html';
         else if(req.url.includes("Lab")){
-            await pdfReader.writeRaport(`reports` + req.url, "web/res.html");
+            pdfReader.writeRaport("web/res.html");
             res.statusCode = 200;
             res.setHeader('Content-Type', 'text/html');
             var filePath = path.resolve("./web/res.html");
