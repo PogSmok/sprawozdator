@@ -1,6 +1,8 @@
 <div align=center>
-  
- # Sprawozdator 
+    [](https://github.com/PogSmok/sprawozdator/blob/master/graph?raw=true)
+
+
+    # Sprawozdator 
 
 ### Innowacyjna aplikacja do tworzenia personalizowanych sprawozdań z fizyki na uczelni technicznej WAT
 </div>
