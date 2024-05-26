@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "chart.js": "^4.4.3",
+    "chartjs-chart-error-bars": "^4.4.0"
+  }
+}
