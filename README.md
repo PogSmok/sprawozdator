@@ -28,6 +28,7 @@ Aplikacja umożliwia szybkie tworzenie tabel i wykresów na podstawie wprowadzon
 2) Pobierz [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 3) Otwórz projekt i urchom plik src/index.js za pomocą komendy node
 ```bash
+npm i
 node src/index.js
 ```
 4) Kliknij na link wyświetlony w wierszu poleceń, żeby otworzyć aplikację.
